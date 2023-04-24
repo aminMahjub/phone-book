@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Poltawski+Nowy:wght@400;500;700&display=swap");
+* {
+  padding: 0rem;
+  margin: 0rem;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background-color: #f5a075;
+  color: rgba(255, 255, 255, 0.9176470588);
+  font-family: "Poltawski Nowy", serif;
+  font-size: 20px;
+}
+
+input,
+button {
+  border: 0rem;
+}
+
+.app-header {
+  margin-top: 1.2rem;
+}
+
+.app-title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.app-get-info {
+  margin: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.app-get-info input[type=search] {
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+}
+.app-get-info input[type=search]:focus {
+  outline: 0rem;
+}
+
+.search-btn {
+  background-color: #fff;
+  width: 3rem;
+  height: 1.7rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.search-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.add-new-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.add-new-contact:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.phone-book {
+  margin-top: 1.5rem;
+  margin-inline: auto;
+  width: 60%;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+.phone-book td, .phone-book th {
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 0rem 0.4rem;
+  color: #000;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.phone-book td:last-of-type, .phone-book th:last-of-type {
+  border-right: none;
+}
+.phone-book tr:last-of-type td {
+  border-bottom: none;
+}
+.phone-book tr:last-of-type {
+  border-bottom: 0px;
+}
+
+.add-contact-modal {
+  position: absolute;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(106, 103, 103, 0.5490196078);
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.add-contact-modal form {
+  display: grid;
+  gap: 0.5rem;
+  width: 30%;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.add-contact-modal form header {
+  position: relative;
+}
+.add-contact-modal form .close-btn {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.add-contact-modal form h1 {
+  color: #000;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.add-contact-modal form input {
+  border-radius: 0.2rem;
+  border: 1px solid #000;
+  padding-left: 0.3rem;
+  font-size: 0.8rem;
+  width: 100%;
+}
+.add-contact-modal form input::-moz-placeholder {
+  font-size: 0.8rem;
+}
+.add-contact-modal form input::placeholder {
+  font-size: 0.8rem;
+}
+
+.show-modal {
+  visibility: visible;
+}/*# sourceMappingURL=style.css.map */

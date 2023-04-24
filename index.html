@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone book</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="https://kit.fontawesome.com/2ae91fd1dc.js" crossorigin="anonymous"></script>
+    <script src="./js/modal.js" defer></script>
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <header class="app-header">
+        <h1 class="app-title">Phone Book</h1>
+    </header>
+
+    <section class="app-get-info">
+        <div class="search-box">
+            <input type="search" name="search-box" id="searchBox" placeholder="Search your contacts" />
+            <button type="" class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+
+        <button type="button" class="add-new-contact">
+            <i class="fas fa-plus" aria-hidden="true"></i>
+            <p>New Contact</p>
+        </button>
+    </section>
+
+
+    <table class="phone-book">
+        <thead>
+            <th class="row">Row</th>
+            <th class="contact-name">Name</th>
+            <th class="contact-number">Number</th>
+            <th class="contact-email">Email</th>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1. <input type="checkbox" /></td>
+                <td>amin</td>
+                <td>09031243172</td>
+                <td>aminmahjoob3172@gmail.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <section class="add-contact-modal">
+        <form action="#">
+            <header>
+                <h1>New Contact</h1>
+                <button type="button" class="close-btn"><i class="fa fas fa-window-close" aria-hidden="true"></i></button>
+            </header>
+            <input type="text" name="contact-name" id="name" placeholder="name" />
+            <input type="number" name="contact-number" id="number" placeholder="number"/>
+            <input type="email" name="contact-email" id="email" placeholder="email"/>
+        </form>
+    </section>
+</body>
+</html>
