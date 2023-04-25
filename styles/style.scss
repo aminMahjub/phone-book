@@ -1,5 +1,6 @@
 @use 'colors' as *;
-@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
 
 * {
     padding: 0rem;
@@ -13,7 +14,7 @@ body,
 html {
     background-color: $app-bg;
     color: $text-cl;
-    font-family: 'Poltawski Nowy', serif;
+    font-family: 'Roboto Slab', serif;
     font-size: 20px;
 }
 
@@ -41,80 +42,105 @@ button {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .2rem;
 
     input[type="search"] {
         border-radius: .2rem;
         padding: .2rem;
+        height: 1.5rem;
+        font-size: .7rem;
+        transition: all .3s linear;
 
         &:focus {
-            outline: 0rem;
+            outline: 2px solid $input-focus-outline;
+            background-color: $input-focus-bg;
+            color: $btn-text;
+        }
+    }
+
+    .search-btn {
+        background-color: $btn-bg;
+        color: $btn-text;
+        font-size: .7rem;
+        width: 2.5rem;
+        height: 1.6rem;
+        border-radius: .2rem;
+        cursor: pointer;
+        transition: all .2s linear;
+    
+        &:hover {
+            background-color: $btn-bg-hover;
+            outline: 2px solid $btn-border-hover;
         }
     }
 }
 
-.search-btn {
-    background-color: $main-white;
-    width: 3rem;
-    height: 1.7rem;
-    border-radius: .2rem;
-    cursor: pointer;
-    transition: all .2s linear;
 
-    &:hover {
-        background-color: $main-dark;
-        color: $main-white;
-    }
-}
 
 .add-new-contact {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: .2rem;
-    background-color: $main-white;
+    background-color: $btn-bg;
+    color: $btn-text;
+    font-size: .8rem;
     border-radius: .5rem;
     padding: .3rem;
     cursor: pointer;
-    transition: all .2s linear;
+    transition: all .2s ease-in;
 
     &:hover {
-        background-color: $main-dark;
-        color: $main-white;
+        background-color: $btn-bg-hover;
+        outline: 2px solid $btn-border-hover;
     }
+}
+
+.plus-icon {
+    background: {
+        image: url('../img/plus.png');
+        repeat: no-repeat;
+        size: 1rem;
+        position: center;
+    }
+
+    width: 1rem;
+    height: 1rem;
 }
 
 .phone-book {
    margin-top: 1.5rem;
    margin-inline: auto;
    width: 60%;
-   background-color: $main-white;
+   font-family: 'Rubik', sans-serif;
    border-radius: .5rem;
    border-collapse: collapse;
    overflow-x: auto;
 
-   td, th {
-    border-bottom: 1px solid $main-dark;
-    border-right: 1px solid $main-dark;
-    padding: 0rem .4rem;
-    color: $main-dark;
-    font-size: .7rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+   thead th {   
+    background-color: $th-bg;
 
-    &:last-of-type {
-        border-right: none;
+    &:first-of-type {
+        width: 8%;
     }
-   } 
-
-   tr:last-of-type td {
-    border-bottom: none;
    }
-
-
-   tr:last-of-type {
-    border-bottom: 0px;
+   
+   th,
+   td {
+    color: $th-color;
+    border: 1px solid $th-color;
+    width: 1rem;
+    height: 1.7rem;
+    font-size: .7rem;
+    text-align: left;
+    padding-left: .5rem;
    }
-
 }
 
 .add-contact-modal {
@@ -133,7 +159,7 @@ button {
         display: grid;
         gap: .5rem;
         width: 30%;
-        background-color: $main-white;
+        // background-color: $main-white;
         padding: .5rem;
         border-radius: .5rem;
 
@@ -150,14 +176,14 @@ button {
         }
 
         h1 {
-            color: $main-dark;
+            // color: $main-dark;
             text-align: center;
             margin-bottom: .5rem;
         }
 
         input {
             border-radius: .2rem;
-            border: 1px solid $main-dark;
+            // border: 1px solid $main-dark;
             padding-left: .3rem;
             font-size: .8rem;
             width: 100%;
