@@ -65,22 +65,6 @@ $btn-hover-outline-value: 2px solid $btn-border-hover;
             color: $btn-text;
         }
     }
-
-    .search-btn {
-        background-color: $btn-bg;
-        color: $btn-text;
-        font-size: .7rem;
-        width: 2.5rem;
-        height: 1.6rem;
-        border-radius: .2rem;
-        cursor: pointer;
-        transition: all .2s linear;
-    
-        &:hover {
-            background-color: $btn-bg-hover;
-            outline: $btn-hover-outline-value;
-        }
-    }
 }
 
 
