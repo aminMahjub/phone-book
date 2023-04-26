@@ -23,6 +23,8 @@ button {
     border: 0rem;
 }
 
+$btn-hover-outline-value: 2px solid $btn-border-hover;
+
 .app-header {
     margin-top: 1.2rem;
 }
@@ -76,7 +78,7 @@ button {
     
         &:hover {
             background-color: $btn-bg-hover;
-            outline: 2px solid $btn-border-hover;
+            outline: $btn-hover-outline-value;
         }
     }
 }
@@ -98,7 +100,7 @@ button {
 
     &:hover {
         background-color: $btn-bg-hover;
-        outline: 2px solid $btn-border-hover;
+        outline: $btn-hover-outline-value;
     }
 }
 
@@ -117,7 +119,7 @@ button {
 .phone-book {
    margin-top: 1.5rem;
    margin-inline: auto;
-   width: 60%;
+   width: 90%;
    font-family: 'Rubik', sans-serif;
    border-radius: .5rem;
    border-collapse: collapse;
@@ -127,7 +129,7 @@ button {
     background-color: $th-bg;
 
     &:first-of-type {
-        width: 8%;
+        width: 5%;
     }
    }
    
@@ -135,12 +137,39 @@ button {
    td {
     color: $th-color;
     border: 1px solid $th-color;
-    width: 1rem;
     height: 1.7rem;
     font-size: .7rem;
     text-align: left;
-    padding-left: .5rem;
-   }
+    padding: 0rem .5rem;
+    }
+
+    td:not(:first-of-type) {
+       max-width: 3rem;
+       text-overflow: ellipsis;
+       overflow: hidden;
+       white-space: nowrap;
+       position: relative;
+
+       .edit-btn {
+            visibility: hidden;
+            position: absolute;
+            right: 10px;
+            padding: 0rem .2rem;
+            background-color: $btn-bg;
+            color: $btn-text;
+            opacity: .6;
+            cursor: pointer;
+            border-radius: .3rem;
+    
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &:hover .edit-btn {
+            visibility: visible;
+        }
+    }
 }
 
 .add-contact-modal {
@@ -159,7 +188,6 @@ button {
         display: grid;
         gap: .5rem;
         width: 30%;
-        // background-color: $main-white;
         padding: .5rem;
         border-radius: .5rem;
 
@@ -176,14 +204,12 @@ button {
         }
 
         h1 {
-            // color: $main-dark;
             text-align: center;
             margin-bottom: .5rem;
         }
 
         input {
             border-radius: .2rem;
-            // border: 1px solid $main-dark;
             padding-left: .3rem;
             font-size: .8rem;
             width: 100%;
@@ -195,6 +221,31 @@ button {
     }
 }
 
+.delete-btn {
+    position: fixed;
+    bottom: 0px;
+    padding: .5rem .7rem;
+    background-color: $btn-bg;
+    color: $btn-text;
+    cursor: pointer;
+    border-radius: 50%;
+    left: 50%;
+    visibility: hidden;
+    transition: all .2s linear;
+
+    &:hover {
+        background-color: $btn-bg-hover;
+        outline: $btn-hover-outline-value;
+    }
+
+}
+
+.show-delete-btn {
+    visibility: visible;
+    bottom: 50px;
+}
+
 .show-modal {
     visibility: visible;
 }
+

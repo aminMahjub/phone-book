@@ -101,7 +101,7 @@ button {
 .phone-book {
   margin-top: 1.5rem;
   margin-inline: auto;
-  width: 60%;
+  width: 90%;
   font-family: "Rubik", sans-serif;
   border-radius: 0.5rem;
   border-collapse: collapse;
@@ -111,17 +111,40 @@ button {
   background-color: #2C74B3;
 }
 .phone-book thead th:first-of-type {
-  width: 8%;
+  width: 5%;
 }
 .phone-book th,
 .phone-book td {
   color: #fff;
   border: 1px solid #fff;
-  width: 1rem;
   height: 1.7rem;
   font-size: 0.7rem;
   text-align: left;
-  padding-left: 0.5rem;
+  padding: 0rem 0.5rem;
+}
+.phone-book td:not(:first-of-type) {
+  max-width: 3rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+.phone-book td:not(:first-of-type) .edit-btn {
+  visibility: hidden;
+  position: absolute;
+  right: 10px;
+  padding: 0rem 0.2rem;
+  background-color: #205295;
+  color: #fff;
+  opacity: 0.6;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+.phone-book td:not(:first-of-type) .edit-btn:hover {
+  opacity: 1;
+}
+.phone-book td:not(:first-of-type):hover .edit-btn {
+  visibility: visible;
 }
 
 .add-contact-modal {
@@ -168,6 +191,28 @@ button {
 }
 .add-contact-modal form input::placeholder {
   font-size: 0.8rem;
+}
+
+.delete-btn {
+  position: fixed;
+  bottom: 0px;
+  padding: 0.5rem 0.7rem;
+  background-color: #205295;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  left: 50%;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.delete-btn:hover {
+  background-color: #1A120B;
+  outline: 2px solid #205295;
+}
+
+.show-delete-btn {
+  visibility: visible;
+  bottom: 50px;
 }
 
 .show-modal {

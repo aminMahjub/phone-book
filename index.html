@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles/style.css" />
     <script src="https://kit.fontawesome.com/2ae91fd1dc.js" crossorigin="anonymous"></script>
     <script src="./js/modal.js" defer></script>
-    <script src="./js/app.js" defer></script>
+    <script src="./js/main.js" defer></script>
 </head>
 <body>
     <header class="app-header">
@@ -46,10 +46,14 @@
             </header>
             <input type="text" name="contact-name" id="name" placeholder="name" />
             <input type="number" name="contact-number" id="number" placeholder="number"/>
-            <input type="email" name="contact-email" id="email" placeholder="email (optional)" required/>
+            <input type="email" name="contact-email" id="email" placeholder="email (optional)"/>
 
-            <button type="submit" class="add-btn">Add</button>
+            <button type="button" class="add-btn">Add</button>
         </form>
     </section>
+
+    <button type="button" class="delete-btn">
+        <i class="fa fas fa-trash"></i>
+    </button>
 </body>
 </html>
