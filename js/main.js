@@ -41,8 +41,9 @@ function getContactData() {
         CONTACTS_LAST_ITEM.editInfo[key] = false;
     }
 
-
     createContactUI(contacts);
+
+    formInputs.forEach(input => input.value = '');
 }
 
 function createContactUI(renderContact) {
