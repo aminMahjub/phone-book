@@ -4,11 +4,20 @@ const formInputs = document.querySelectorAll('.add-contact-modal form input');
 const addContactBtn = document.querySelector('.add-btn');
 const trashBtn = document.querySelector('.delete-btn');
 const searchInput = document.querySelector('#searchBox'); 
-const checkBoxSet = new Set();
-const checkboxes = 
+const checkBoxSet = new Set(); 
+let contacstClone = [];
 
 addContactBtn.addEventListener('click', getContactData);
-searchInput.addEventListener('input', searchContact);
+searchInput.addEventListener('input', () => {
+    if (contacts.length !== 0) {
+        contacstClone = [...contacts];
+        searchContact();
+    }
+});
+
+searchInput.addEventListener('focusout', () => {
+    
+})
 
 function getContactData() {
     const [name, number, email] = formInputs;
@@ -220,18 +229,20 @@ function deleteContact() {
 
 function searchContact() {
     const searchContactValue = searchInput.value || false;
-    let sendContactData = contacts;
-
+    
     if (searchContactValue) {
         const contactOutputProps = contacts.map(contact => Object.values(contact.hasOutputProps));
-        const findContact = contactOutputProps.map((element, index) => {
-            if (element.includes(searchContactValue)) {
-                return contacts[index];
-            }
-        }).filter(contact => contact !== undefined);
 
-        sendContactData = findContact;
+        const seachedArr = contactOutputProps.map((contactOutputProp, index) => {
+            const contactoutputStr = contactOutputProp.join('');
+            
+            for (let character of searchContactValue) {
+                if (contactoutputStr.includes(character) && contactoutputStr.includes(searchContactValue)) {
+                    return contacts[index];
+                }
+            }
+        }).filter(contact => contact !== undefined).flat();
+        createContactUI(seachedArr);  
     }
-    
-    createContactUI(sendContactData);
+
 }
