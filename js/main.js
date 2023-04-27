@@ -5,6 +5,7 @@ const addContactBtn = document.querySelector('.add-btn');
 const trashBtn = document.querySelector('.delete-btn');
 const searchInput = document.querySelector('#searchBox'); 
 const checkBoxSet = new Set();
+const checkboxes = 
 
 addContactBtn.addEventListener('click', getContactData);
 searchInput.addEventListener('input', searchContact);
@@ -77,7 +78,7 @@ function createContactUI(renderContact) {
             },
             {
                 type: 'checkbox',
-                name: `${id}-id-checkbox`
+                name: `${id}-id-checkbox`,
             }
         )
         checkbox.addEventListener('click', selectContact); 
@@ -89,7 +90,6 @@ function createContactUI(renderContact) {
                 {
                     element: 'td', 
                     childOf: tr,
-                    text: value
                 }, 
                 {
                     title: value,
@@ -109,13 +109,25 @@ function createContactUI(renderContact) {
                 }
             );
 
+            const p = createElement(
+                {   
+                    element: 'p',
+                    childOf: td,
+                    text: value
+                }
+            )
+
             editBtn.addEventListener('click', editContact);
             
             if (contact.editInfo[key]) {
-                td.contentEditable = true;
+                p.contentEditable = true;
                 editBtn.textContent = 'Done';
             }
         });
+
+        if (contact.selected) {
+            checkbox.checked = true;
+        }
     })
 }
 
@@ -153,16 +165,20 @@ function selectContact(event) {
     const tdRoot = checkbox.parentElement.parentElement;
     
     contacts.forEach(contact => {
+
+        function setCheckboxProps(isSelected) {
+            isSelected ? checkBoxSet.add(checkbox) : checkBoxSet.delete(checkbox);
+            contact.selected = isSelected;            
+        }
+
         if (+tdRoot.id === contact.id) {
             if (checkbox.checked) {
-                checkBoxSet.add(checkbox);
-                contact.selected = true;
-    
+                setCheckboxProps(true);
                 trashBtnClassHandler(false);
+
             } else {
-                checkBoxSet.delete(checkbox);
-                contact.selected = false;
-    
+                setCheckboxProps(false);
+
                 if (checkBoxSet.size === 0) {
                     trashBtnClassHandler(true);
                 }  
@@ -182,7 +198,7 @@ function editContact(event) {
             for (const key in contact.editInfo ) {
                 if (tdRoot.getAttribute('arial-value') === key) {
                     contact.editInfo[key] = !contact.editInfo[key];
-                    contact.hasOutputProps[key] = tdRoot.childNodes[0].nodeValue; 
+                    contact.hasOutputProps[key] = tdRoot.childNodes[1].textContent; 
                 }
             }
         }
