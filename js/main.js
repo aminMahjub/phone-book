@@ -1,38 +1,79 @@
 let contacts = [];
 
-const formInputs = document.querySelectorAll('.add-contact-modal form input');
+const phoneBookForm = document.forms[0];
 const addContactBtn = document.querySelector('.add-btn');
 const trashBtn = document.querySelector('.delete-btn');
 const searchInput = document.querySelector('#searchBox'); 
 const checkBoxSet = new Set(); 
 let contacstClone = [];
 
-addContactBtn.addEventListener('click', getContactData);
-searchInput.addEventListener('input', () => {
+phoneBookForm.addEventListener('submit', formValidation);
+searchInput.addEventListener('input', (e) => {
     if (contacts.length !== 0) {
-        contacstClone = [...contacts];
-        searchContact();
+        searchContact();    
     }
 });
 
-searchInput.addEventListener('focusout', () => {
-    
-})
+function formValidation(event) {
+    event.preventDefault();
+
+    function showErrorMsg(input, message = '') {
+        const messageBox = input.parentElement.children[2];
+        messageBox.textContent = message;
+    }
+
+    function hasValue(input, message) {
+        if (input.value.trim() === '') {
+            showErrorMsg(input, message);
+            return false;
+        } else {
+            const resetInputs = showErrorMsg(input, '');
+            return true;
+        }
+    } 
+
+    function numberValidation() {
+        const phoneNumberInput = phoneBookForm.elements['contact-number'];
+        const NUMBER_INVALID_MESSAGE = 'Enter number please and less than 10';
+        const EMPTY_NUMBER_INPUT = 'Your number input is empty';
+
+        if (!hasValue(phoneNumberInput, EMPTY_NUMBER_INPUT) ||
+            typeof +phoneNumberInput.value !== 'number' ||
+            phoneNumberInput.value.length >= 12) 
+        {
+            showErrorMsg(phoneNumberInput, NUMBER_INVALID_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    function emailValiadtion() {
+        const phoneEmailInput = phoneBookForm.elements['contact-email'];
+        const EMAIL_INVALID_MESSAGE = 'Please enter valid email';
+
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(phoneEmailInput.value) && hasValue(phoneEmailInput)) {
+            showErrorMsg(phoneEmailInput, EMAIL_INVALID_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    debugger;
+    const numberInput = numberValidation();
+    const emailInput = emailValiadtion();
+    const name = hasValue(phoneBookForm.elements['contact-name'], 'Your name input is empty');
+
+    if (numberInput && emailInput && name) {
+        getContactData();
+    }
+
+}
 
 function getContactData() {
-    const [name, number, email] = formInputs;
-
-    formInputs.forEach(input => {
-        let inputValue = input.value || false;
-
-        if (!inputValue && input !== email) {
-            const err = `${input.id} input is empty`;
-
-            alert(err);
-            throw new Error(err);
-        }
-    });
-
+    const [, name, number, email, ] = phoneBookForm.elements;
     contacts.push({ 
         hasOutputProps: {
             name: name.value,
@@ -51,8 +92,6 @@ function getContactData() {
     }
 
     createContactUI(contacts);
-
-    formInputs.forEach(input => input.value = '');
 }
 
 function createContactUI(renderContact) {

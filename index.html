@@ -37,17 +37,32 @@
         <tbody></tbody>
     </table>
 
-    <section class="add-contact-modal">
-        <form action="">
+    <section class="add-contact-modal show-modal">
+        <form action="" class="phone-info-form">
             <header>
                 <h1>New Contact</h1>
                 <button type="button" class="close-btn"><i class="fa fas fa-window-close" aria-hidden="true"></i></button>
             </header>
-            <input type="text" name="contact-name" id="name" placeholder="name" />
-            <input type="number" name="contact-number" id="number" placeholder="number"/>
-            <input type="email" name="contact-email" id="email" placeholder="email (optional)"/>
 
-            <button type="button" class="add-btn">Add</button>
+            <div class="name-field">
+                <label for="name">Name</label>
+                <input type="text" name="contact-name" id="name" placeholder="e.g: amin mahjoob" />
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="number-filed">
+                <label for="number">Phone</label>
+                <input type="number" name="contact-number" id="number" placeholder="e.g: 09031243172"/>
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="email-field">
+                <label for="email">Email</label>
+                <input type="email" name="contact-email" id="email" placeholder="email (optional)"/>
+                <span class="error-msg"></span>
+            </div>
+
+            <button type="submit" class="add-btn">Add</button>
         </form>
     </section>
 

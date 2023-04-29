@@ -1,6 +1,7 @@
 const addNewContact = document.querySelector('.add-new-contact');
 const modal = document.querySelector('.add-contact-modal');
 const closeModalBtn = document.querySelector('.close-btn');
+const form = document.forms[0];
 
 function modalHandler() {
     if (!modal.classList.contains('show-modal')) {
@@ -10,5 +11,10 @@ function modalHandler() {
     }
 }
 
+modal.addEventListener('click', event => {
+    if (event.target === event.currentTarget) {
+        modalHandler();
+    }
+});
 addNewContact.addEventListener('click', modalHandler);
 closeModalBtn.addEventListener('click', modalHandler);

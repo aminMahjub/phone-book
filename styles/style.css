@@ -56,20 +56,6 @@ button {
   background-color: #453C67;
   color: #fff;
 }
-.search-box .search-btn {
-  background-color: #205295;
-  color: #fff;
-  font-size: 0.7rem;
-  width: 2.5rem;
-  height: 1.6rem;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  transition: all 0.2s linear;
-}
-.search-box .search-btn:hover {
-  background-color: #1A120B;
-  outline: 2px solid #205295;
-}
 
 .add-new-contact {
   display: flex;
@@ -165,6 +151,7 @@ button {
   width: 30%;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  background-color: #fff;
 }
 .add-contact-modal form header {
   position: relative;
@@ -179,18 +166,27 @@ button {
 .add-contact-modal form h1 {
   text-align: center;
   margin-bottom: 0.5rem;
+  color: #000;
 }
 .add-contact-modal form input {
   border-radius: 0.2rem;
   padding-left: 0.3rem;
   font-size: 0.8rem;
   width: 100%;
+  border: 1px solid #000;
 }
 .add-contact-modal form input::-moz-placeholder {
   font-size: 0.8rem;
 }
 .add-contact-modal form input::placeholder {
   font-size: 0.8rem;
+}
+.add-contact-modal form label {
+  color: #000;
+}
+.add-contact-modal form .error-msg {
+  color: #ff0000;
+  font-size: 0.7rem;
 }
 
 .delete-btn {
